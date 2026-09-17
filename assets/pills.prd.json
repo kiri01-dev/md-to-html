@@ -1,0 +1,6 @@
+{
+  "High": "red", "Medium": "amber", "Low": "grey",
+  "New": "blue", "Rebuild": "amber", "Refactor": "amber", "Keep": "green",
+  "Out of scope": "grey", "Not in suite": "grey",
+  "Done": "green", "In progress": "amber", "Blocked": "red", "Open": "blue"
+}

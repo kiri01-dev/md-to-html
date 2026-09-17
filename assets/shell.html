@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>@@TITLE@@</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<style>
+:root{
+  --ground:#F4F7F6; --paper:#FFFFFF; --ink:#12201A; --muted:#4B5B55; --rule:#D3DCD8; --rule-soft:#E6ECE9;
+  --accent:#2E6B4C; --accent-bg:#E1EEE7; --red:#A8352A; --red-bg:#F8E3DF; --amber:#8A5B00; --amber-bg:#F6ECD6;
+  --blue:#2A5E8A; --blue-bg:#DEE9F3; --code:#EEF3F1;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--ground);color:var(--ink);font:15.5px/1.6 var(--sans);padding-inline:16px;padding-block:0 64px}
+.wrap{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:230px minmax(0,1fr);gap:24px 40px}
+header.top{grid-column:1/-1;padding-block:36px 20px;border-bottom:2px solid var(--ink);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px 32px}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+h1{font-size:clamp(28px,4vw,40px);line-height:1.1;margin:0;font-weight:700;letter-spacing:-.01em;text-wrap:balance}
+.meta{max-width:640px;color:var(--muted);font-size:14px;display:grid;gap:4px}
+.meta:empty{display:none}
+.meta strong{color:var(--ink);font-weight:600}
+nav.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 20px);align-self:start;display:flex;flex-direction:column;gap:2px;font-size:13.5px;padding-top:8px;max-height:calc(100vh - 40px);overflow-y:auto}
+nav.toc .lbl{font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+nav.toc a{color:var(--muted);text-decoration:none;padding:5px 10px;border-left:2px solid var(--rule)}
+nav.toc a.nav-sub{padding:3px 10px 3px 22px;font-size:12.5px}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--ink);border-left-color:var(--accent);outline:none}
+main{min-width:0}
+section{background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:8px 32px 28px;margin-bottom:24px}
+section.intro{padding-top:14px}
+h2{font-size:23px;line-height:1.25;margin:22px 0 12px;font-weight:700;text-wrap:balance;scroll-margin-top:80px}
+h3{font-size:17px;margin:28px 0 8px;font-weight:600;text-wrap:balance;scroll-margin-top:80px}
+h4{font-size:15.5px;margin:22px 0 6px;font-weight:600}
+h5,h6{font-size:14.5px;margin:18px 0 6px;font-weight:600;color:var(--muted)}
+p,li{max-width:72ch}
+p{margin:10px 0}
+ul,ol{padding-left:22px;margin:10px 0}
+li{margin:6px 0}
+strong{font-weight:600}
+a{color:var(--blue)}
+code{font:13.5px var(--mono);background:var(--code);padding:1px 5px;border-radius:3px}
+pre{background:var(--code);border:1px solid var(--rule-soft);border-radius:5px;padding:14px 16px;overflow-x:auto;font:13px/1.55 var(--mono)}
+pre code{background:none;padding:0}
+p,li,blockquote,.meta,.callout{overflow-wrap:anywhere}
+blockquote{margin:14px 0;padding:4px 16px;border-left:3px solid var(--rule);color:var(--muted)}
+hr{border:0;border-top:1px solid var(--rule);margin:24px 0}
+img{max-width:100%}
+.tw{overflow-x:auto;margin:14px 0;border:1px solid var(--rule);border-radius:5px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th{background:var(--ground);text-align:left;font-weight:600;font-size:13px;color:var(--ink);padding:9px 12px;border-bottom:1px solid var(--rule);vertical-align:bottom}
+td{padding:9px 12px;border-top:1px solid var(--rule-soft);vertical-align:top}
+tbody tr:first-child td{border-top:0}
+td:first-child{font-weight:500}
+.callout{margin:14px 0;padding:10px 14px;border-radius:5px;border:1px solid var(--rule);background:var(--ground)}
+.callout p{margin:4px 0}
+.callout-title{font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px}
+.callout.note{background:var(--blue-bg);border-color:#BCD2E6}.callout.note .callout-title{color:var(--blue)}
+.callout.question{background:var(--amber-bg);border-color:#E6D3A8}.callout.question .callout-title{color:var(--amber)}
+.callout.warning{background:var(--red-bg);border-color:#EBC3BC}.callout.warning .callout-title{color:var(--red)}
+.pill{display:inline-block;font:500 12px/1.5 var(--mono);padding:1px 8px;border-radius:999px;white-space:nowrap}
+.pill.red{background:var(--red-bg);color:var(--red)}
+.pill.amber{background:var(--amber-bg);color:var(--amber)}
+.pill.blue{background:var(--blue-bg);color:var(--blue)}
+.pill.green{background:var(--accent-bg);color:var(--accent)}
+.pill.grey{background:var(--rule-soft);color:var(--muted)}
+.embed{margin:16px 0;overflow-x:auto}
+@media (max-width:860px){
+  .wrap{grid-template-columns:1fr;gap:0}
+  nav.toc{display:none}
+  header.top{margin-bottom:20px}
+  section{padding:6px 18px 22px}
+}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+@media print{
+  body{background:#fff;padding:0}
+  .wrap{display:block}
+  nav.toc{display:none}
+  section{border:0;padding:0;margin:0 0 16px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      @@EYEBROW@@
+      <h1>@@H1@@</h1>
+    </div>
+    <div class="meta">@@META@@</div>
+  </header>
+  @@BAR@@
+  <nav class="toc" aria-label="Contents"><span class="lbl">Contents</span>
+@@NAV@@
+  </nav>
+  <main id="doc">
+@@BODY@@
+  </main>
+  @@PANEL@@
+</div>
+@@APP@@
+</body>
+</html>

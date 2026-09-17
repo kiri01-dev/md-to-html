@@ -1,0 +1,40 @@
+{
+  "skill_name": "md-to-html",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Make the J0 pre-run reconciliation PRD v4 commentable so Kamesh can review it. Tag comments with the stage or K-note they refer to.",
+      "expected_output": "Commentable HTML beside the PRD, verified, with Stage/K IDs carried on comments and PRD status pills.",
+      "files": [],
+      "assertions": [
+        "verify.py passes all five checks",
+        "Commentable layer present and working (text + row comments, no page errors)",
+        "Comments carry the nearest document ID",
+        "No horizontal page scroll at 390px"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Turn the J0 data consolidation plan into a page the team can just read.",
+      "expected_output": "Read-only HTML, no comment layer, verified.",
+      "files": [],
+      "assertions": [
+        "verify.py passes all five checks",
+        "Read-only: no comment toolbar, panel or scripts",
+        "Header metadata (Scope, Originals, Evidence) moved into header",
+        "No horizontal page scroll at 390px"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I need the data dictionary as HTML, one version to circulate and one for review.",
+      "expected_output": "Both files, both verified.",
+      "files": [],
+      "assertions": [
+        "Both read-only and commentable files produced",
+        "verify.py passes for both",
+        "No horizontal page scroll at 390px (long file paths wrap)"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+[
+  {"name": "question", "source": "comment", "match": "(?i)\\bTODO\\b|\\bFIXME\\b|\\bTBD\\b|open question", "css_class": "question", "title": "Open question"},
+  {"name": "warning", "source": "comment", "match": "(?i)^\\s*(warning|caution|risk)\\b", "css_class": "warning", "title": "Warning"},
+  {"name": "note", "source": "comment", "match": ".*", "css_class": "note", "title": "Note"}
+]
